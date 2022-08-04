@@ -1,0 +1,8 @@
+body {
+  width: 500px;
+  height: 550px;
+  background: rgb(106,106,106);
+  background: linear-gradient(-30deg, rgba(106,106,106,1) 0%, rgba(203,203,203,1) 35%, rgba(219,219,219,1) 100%);
+  font-size: 12pt;
+  border-radius: 0% 0% 10% 10%;
+}
