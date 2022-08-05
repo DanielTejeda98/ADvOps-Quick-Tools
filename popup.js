@@ -1,11 +1,13 @@
+var bulkType = 'testing_tester'
+
 document.querySelector("#submit").addEventListener("click", () =>
 {
-  window.close()
+  
   const workItemElement = document.querySelector("#workItemCode")
   const workItemId = workItemElement.value.trim()
   const prefix = document.querySelector("#prefix").value.trim()
   const taskTitle = document.querySelector("#taskTitle").value.trim()
-  const checkboxes = document.getElementsByName("testing_devices")
+  const checkboxes = document.getElementsByName(bulkType)
   const workItemsToAdd = []
   if((/^[0-9]*$/.test(workItemId)))
   {
@@ -23,11 +25,12 @@ document.querySelector("#submit").addEventListener("click", () =>
       }
   }
   workItemElement.value = ""
+  window.close()
 })
 
 document.querySelector("#selectAll").addEventListener("click", () =>
 {
-  const checkboxes = document.getElementsByName("testing_devices")
+  const checkboxes = document.getElementsByName(bulkType)
   checkboxes.forEach(checkbox => 
     {
       checkbox.checked = true
@@ -47,3 +50,20 @@ const chromeMessage = (workItemId, workItemsToAdd) =>
     })
   })
 }
+
+$('input[name="bulkTypeTaskSelector"]').change(e =>
+  {
+    console.log(e.currentTarget.id)
+    if(e.currentTarget.id === "bulkTypeTaskSelectorTesters")
+    {
+      bulkType = "testing_tester"
+      loadTesterOptions()
+    }
+    else if (e.currentTarget.id === "bulkTypeTaskSelectorDevices")
+    {
+      bulkType = "testing_devices"
+      loadDeviceOptions()
+    }
+  })
+
+loadForm()
